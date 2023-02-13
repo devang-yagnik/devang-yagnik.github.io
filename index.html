@@ -63,7 +63,7 @@
             let sub = document.getElementById("submit")
             sub.disabled = !(sub.disabled)
         }
-        let store = () => {
+        let store = (event) => {
             var dob = new Date(document.getElementById("dob").value)
             var curr = new Date()
             var age = (curr.getFullYear() - dob.getFullYear())
@@ -76,7 +76,7 @@
 
             if(isNaN(age) || age<18 || age>55){
                 alert("Age must be between 18 and 55!")
-                return
+                event.preventDefault()
             }
             let toStore = JSON.parse(localStorage.getItem("user")) || []
             toStore.push({
@@ -93,7 +93,7 @@
 <body>
     <div id="form">
         <h1>Registration Form</h1>
-        <form onsubmit="store()">
+        <form onsubmit="store(event)">
             <input type="text" name="name" id="name" placeholder="Username" required>
             <input type="email" name="email" id="email" placeholder="Email Address" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
