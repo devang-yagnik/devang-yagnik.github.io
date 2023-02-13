@@ -74,7 +74,7 @@
             else if(curr.getMonth() - dob.getMonth() < 0)
                 age--
 
-            if(age<18 || age>55){
+            if(isNaN(age) || age<18 || age>55){
                 alert("Age must be between 18 and 55!")
                 return
             }
